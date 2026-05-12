@@ -25,7 +25,7 @@ jobs:
 
       - name: Upload JAR artifact
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bai03-artifact
           path: Bai03/target/*.jar
