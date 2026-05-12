@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Bước quan trọng nhất: Lấy code từ repo về Runner
       - uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -21,11 +22,13 @@ jobs:
           cache: maven
 
       - name: Build and Verify with Maven
-        run: mvn -B verify --file Bai03/pom.xml
+        # ĐÃ SỬA: Bỏ --file Bai03/pom.xml vì pom.xml nằm ở gốc
+        run: mvn -B verify
 
       - name: Upload JAR artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: bai03-artifact
-          path: Bai03/target/*.jar
+          # ĐÃ SỬA: Đường dẫn đúng là target/ (không có Bai03/)
+          path: target/*.jar
